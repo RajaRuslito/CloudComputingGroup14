@@ -1,7 +1,9 @@
 # Instalasi dan Konfigurasi Apache Cloudstack Private Cloud
-![image](https://github.com/AhmadRifqi86/cloudstack-install-and-configure/assets/111260795/7074f71b-6415-4646-a9c7-085ce958520d)
+![331050339-7074f71b-6415-4646-a9c7-085ce958520d](https://hackmd.io/_uploads/BJNH1Yoblg.png)
 
-Contributors : 
+**Kelompok 14**
+
+Anggota Kelompok: 
 - Aria Bima Sakti
 - Bintang Marsyuma
 - Raja Yonandro Ruslito
@@ -13,9 +15,19 @@ Contributors :
 
 Apache CloudStack adalah perangkat lunak komputasi awan sumber terbuka yang dirancang untuk menyebarkan dan mengelola jaringan besar mesin virtual (VM). Sebagai platform Infrastructure-as-a-Service (IaaS), CloudStack menyediakan seperangkat fitur yang lengkap untuk membangun dan mengelola lingkungan cloud yang dapat diskalakan. Platform ini mendukung berbagai hypervisor, kemampuan API yang luas, serta seperangkat alat yang kaya untuk administrator cloud.
 
+### Tujuan Penggunaan Apache CloudStack
+
+Tujuan dari penggunaan Apache CloudStack dalam proyek ini adalah untuk membangun dan mengelola infrastruktur cloud yang scalable, fleksibel, dan mudah dikontrol melalui antarmuka grafis maupun command line. Secara spesifik, penggunaan CloudStack bertujuan untuk:
+
+* Menyediakan platform Infrastructure as a Service (IaaS) yang stabil dan handal.
+* Mempermudah proses provisioning dan manajemen mesin virtual secara terpusat.
+* Mendukung kebutuhan simulasi, pengujian, atau deployment layanan secara terisolasi melalui virtualisasi.
+* Meningkatkan efisiensi dalam pengelolaan resource seperti jaringan, storage, dan compute secara otomatis.
+* Memberikan pengalaman langsung dalam mengelola cloud environment berbasis open-source yang digunakan secara luas di industri.
+
 ### Referensi Arsitektur
 
-![image](https://github.com/AhmadRifqi86/cloudstack-install-and-configure/assets/111260795/68ea9d69-1118-4500-8825-8c099f69c4ce)
+![330488558-68ea9d69-1118-4500-8825-8c099f69c4ce](https://hackmd.io/_uploads/B1s5yFiWle.png)
 
 ### Dependencies
 
@@ -31,25 +43,22 @@ KVM (Kernel-based Virtual Machine) adalah teknologi virtualisasi sumber terbuka 
 
 ## Pengaturan Lingkungan Komputasi
 
-### Persyaratan Hardware yang Digunakan
+### Konfigurasi Hardware yang Digunakan
 
 ```
-CPU : Intel Core i5 gen 8
-RAM : 24 GB
-Storage : 250GB
+CPU : Intel Core i5 gen 10
+RAM : 32 GB
+Storage : 150GB
 Network : Ethernet 100GB/s
-Operating System : Ubuntu Server 22.04
+Operating System : Ubuntu Server 24.04
 ```
 
 ### Network Address
 
 ```
-Network Address : 192.168.104.0/24
-Host IP address : 192.168.104.24/24
-Gateway : 192.168.104.1
-Management IP :
-System IP :
-Public IP :
+Network Address : 192.168.0.0/24
+Host IP address : 192.168.0.172/24
+Gateway : 192.168.0.1
 ```
 
 ## Konfigurasi Network 
@@ -64,12 +73,12 @@ sudo nano ./0*.yaml
 Isi dari file tersebut adalah seperti ini:
 ```
 # This is the network config written by 'subiquity'
-network:
+network:    
   version: 2
   ethernets:
-    enp0s3:                             # Interface Name
-      addresses: [10.1.1.8/24]          # Ip Address
-      gateway4: 10.1.1.1                # Gateway
+    eno1:                             # Interface Name
+      addresses: [192.168.0.172/24]         # Ip Address
+      gateway4: 192.168.0.1                # Gateway
       nameservers:
         addresses: [10.1.1.1,8.8.8.8]   # DNS Server
 ```
@@ -82,19 +91,19 @@ network:
   version: 2
   renderer: networkd
   ethernets:
-    enp0s3:
+    eno1:
       dhcp4: false
       dhcp6: false
       optional: true
   bridges:
     cloudbr0:
-      addresses: [192.168.104.24/24]  #Your host IP address
+      addresses: [192.168.0.172/24]  #Your host IP address
       routes:
         - to: default
-          via: 192.168.104.1
+          via: 192.168.0.1
       nameservers:
         addresses: [1.1.1.1,8.8.8.8]
-      interfaces: [enp0s3]
+      interfaces: [eno1]
       dhcp4: false
       dhcp6: false
       parameters:
@@ -124,12 +133,11 @@ ping -c 20 google.com  #make sure you could connect to the internet
 ```
 
 > Catatan: jika Anda tidak dapat melakukan ping ke google.com, coba ping gateway Anda dan 8.8.8.8
-> Langkah ini akan memberi tahu Anda masalah koneksi antara komputer dan internet Anda, pastikan tidak ada masalah dengan internet karena Anda akan menginstal beberapa paket dari internet
-
+> Langkah ini untuk memastikan koneksi komputer dan internet Anda berhasil
 ### Masuk Sebagai Root User
 
 ```
-su -
+sudo -i
 ```
 
 ### Menginstal Alat Pemantauan Hardware Resource
@@ -161,6 +169,9 @@ nano /etc/ssh/sshd_config
 ```
 Temukan baris 'PermitRootLogin' pastikan diatur ke 'yes'
 
+![image](https://hackmd.io/_uploads/ByJdavoble.png)
+
+
 ## Instalasi Cloudstack (Controller and Compute Node di Host yang Sama)
 
 
@@ -182,11 +193,10 @@ echo deb [signed-by=/etc/apt/keyrings/cloudstack.gpg] http://packages.shapeblue.
 ```
 nano /etc/apt/sources.list.d/cloudstack.list
 ```
-Pastikan ini ada pada bagian paling akhir:
+Pastikan ini ada pada file tersebut:
 
-```
-deb [signed-by=/etc/apt/keyrings/cloudstack.gpg] http://packages.shapeblue.com/cloudstack/upstream/debian/4.18 /
-```
+![image](https://hackmd.io/_uploads/rkqfCDsZle.png)
+
 
 ### Menginstal Cloudstack dan Server MySQL
 
@@ -195,7 +205,7 @@ apt-get update -y
 apt-get install cloudstack-management mysql-server
 ```
 
-> Catatan: Proses ini akan memakan waktu lama
+> Catatan: Proses download akan memakan waktu lama
 
 ### Konfigurasi MySQL
 
@@ -226,13 +236,17 @@ systemctl restart mysql
 ```
 systemctl status mysql
 ```
-Seharusnya kata 'aktif' dapat dilihat pada output
+mysql diharapkan berjalan aktif sebagaimana output berikut:
+![image](https://hackmd.io/_uploads/Bk1d0Pi-lx.png)
+
 
 ### Deploy Database sebagai Root dan Kemudian Buat Pengguna "cloud" dengan Kata Sandi "cloud" juga
 
 ```
-cloudstack-setup-databases cloud:cloud@localhost --deploy-as=root:Pa$$w0rd -i 192.168.104.24
+cloudstack-setup-databases cloud:cloud@localhost --deploy-as=root:Pa$$w0rd -i 192.168.0.172
 ```
+
+> pastikan alamat di akhir sesuai dengan alamat server
 
 ### Konfigurasikan Penyimpanan Primer dan Sekunder
 
@@ -309,7 +323,7 @@ echo 'tcp_port = "16509"' >> /etc/libvirt/libvirtd.conf
 echo 'mdns_adv = 0' >> /etc/libvirt/libvirtd.conf
 echo 'auth_tcp = "none"' >> /etc/libvirt/libvirtd.conf
 ```
-Explanation
+Penjelasan:
 ```
 echo 'listen_tls=0' >> /etc/libvirt/libvirtd.conf
 # nonaktifkan mendengarkan TLS pada daemon libvirt
@@ -367,7 +381,7 @@ systemctl restart libvirtd
 ### Konfigurasikan Firewall Iptables dan Jadikan Persisten
 
 ```
-NETWORK=192.168.101.0/24
+NETWORK=192.168.0.0/24
 iptables -A INPUT -s $NETWORK -m state --state NEW -p udp --dport 111 -j ACCEPT
 iptables -A INPUT -s $NETWORK -m state --state NEW -p tcp --dport 111 -j ACCEPT
 iptables -A INPUT -s $NETWORK -m state --state NEW -p tcp --dport 2049 -j ACCEPT
@@ -454,14 +468,70 @@ http://<YOUR_IP_ADDRESS>:8080
 Contoh
 
 ```
-http://192.168.104.24:8080
+http://192.168.0.172:8080
 ```
 
 ### Anda Seharusnya Dapat Melihat Dashboard Cloudstack
 
-![image](https://github.com/AhmadRifqi86/cloudstack-install-and-configure/assets/111260795/1d99f652-efec-4d4d-857e-dec1122ed865)
+![image](https://hackmd.io/_uploads/H1bDkujbxx.png)
+
+## Konfigurasi Dashboard Cloudstack
+### Login ke Dashboard Cloudstack 
+![Screenshot 2025-04-30 230208](https://hackmd.io/_uploads/ByfexujWex.png)
+
+### Buat Zone baru
+1. Memilih core untuk pilihan zone
+![Screenshot 2025-04-30 231239](https://hackmd.io/_uploads/HykBlOjWgl.png)
+2. Pilih Basic di bagian ini agar network dikonfigurasi secara otomatis
+![image](https://hackmd.io/_uploads/BJkaxuo-xe.png)
+3. Isi detail zone dengan nama IP DNS (gunakan IP 8.8.8.8), IP internal DNS (IP subnet jaringan server), dan hypervisor (pilih KVM). 
+![Screenshot 2025-04-30 231255](https://hackmd.io/_uploads/rJI1WusZgl.png)
+![Screenshot 2025-04-30 231301](https://hackmd.io/_uploads/B11D-diZll.png)
+4. Lanjutkan ke step berikutnya.
+![image](https://hackmd.io/_uploads/ryvtWds-el.png)
+5. Isi detail pod yang akan digunakan, mulai dari nama, IP gateway, subnet mask, dan alamat IP yang akan digunakan untuk manajemen internal cloudstack.
+![Screenshot 2025-04-30 231317](https://hackmd.io/_uploads/By5jbdibll.png)
+6. Isi detail jaringan tamu yang nantinya digunakan untuk jaringan pada mesin VM. 
+![image](https://hackmd.io/_uploads/SkwE7uobex.png)
+7. Buat cluster baru di zone ini
+![image](https://hackmd.io/_uploads/BkRj7_oWxl.png)
+8. Isi detail host yang akan mengisi cluster ini dengan alamat IP server, username (root), dan password (Pa$$w0rd).
+![Screenshot 2025-04-30 231533](https://hackmd.io/_uploads/BJTkEOj-eg.png)
+9. Isi detail primary storage seperti berikut.
+![image](https://hackmd.io/_uploads/B1u3V_iZxg.png)
+10. Isi juga detail untuk secondary storage sebagai berikut.
+![image](https://hackmd.io/_uploads/S1JlBdoZge.png)
+11. Selesaikan konfigurasi sampai berhasil seperti gambar berikut.
+![Screenshot 2025-04-30 232555](https://hackmd.io/_uploads/Hk3Gruo-xl.png)
+
+### Menambahkan ISO VM ke Cloudstack
+1. Buka tab Images dan masuk ke tab ISOs. Klik Register ISO. 
+![image](https://hackmd.io/_uploads/rkzevuo-xe.png)
+2. Isi detail dari ISO yang akan digunakan.
+![image](https://hackmd.io/_uploads/ByZnDuiWgl.png)
+> Jika terjadi error, gunakan link ISO yang digunakan diperoleh dari halaman download chrome dan salin link dari file ISO yang sedang didownload tersebut.
+3. Masuk ke detail ISO yang telah dibuat dan lihat progress download ISO-nya.
+![image](https://hackmd.io/_uploads/HkfVOOsblg.png)
+4. Tunggu hingga proses download ISO selesai.
+![image](https://hackmd.io/_uploads/rJ1Pu_ibex.png)
+
+### Membuat Instance atau VM di Cloudstack
+1. Buka tab Compute dan masuk ke tab Instances. Klik Add Instance.
+![image](https://hackmd.io/_uploads/ByTfT_oWxx.png)
+2. Masukkan detail zone, pod, cluster dan host yang digunakan untuk deploy VM.
+![image](https://hackmd.io/_uploads/BJKu6doZee.png)
+3. Pilih ISO yang telah di-download sebelumnya.
+![image](https://hackmd.io/_uploads/SkSq6do-gg.png)
+4. Pilih konfigurasi mesin untuk VM dan ukuran penyimpanannya.
+![image](https://hackmd.io/_uploads/BybkA_ibex.png)
+5. Pilih default pada security group.
+![image](https://hackmd.io/_uploads/HyWTytoZex.png)
+6. Untuk bagian detail bisa diisi atau dibiarkan saja dan luncurkan instance-nya.
+![image](https://hackmd.io/_uploads/H1xleKs-xg.png)
 
 
-## Complete Video Tutorial
 
-https://youtu.be/txQTvnF9jk8
+----
+## Kesimpulan
+
+Dengan menggunakan Apache CloudStack, proses manajemen infrastruktur virtual menjadi lebih mudah, terpusat, dan efisien. Meskipun terdapat beberapa tantangan teknis saat instalasi, solusi dapat ditemukan dengan dokumentasi dan troubleshooting yang tepat.
