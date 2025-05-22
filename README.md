@@ -29,7 +29,7 @@ Tujuan dari penggunaan Apache CloudStack dalam proyek ini adalah untuk membangun
 
 ![330488558-68ea9d69-1118-4500-8825-8c099f69c4ce](https://hackmd.io/_uploads/B1s5yFiWle.png)
 
-### Dependencies
+### Dependencies yang Digunakan
 
 #### MySQL
 
