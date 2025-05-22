@@ -532,24 +532,31 @@ http://192.168.0.172:8080
 ## Mengakses Server dari Jaringan yang Berbeda
 ### Download Tailscale di Perangkat yang Berbeda
 **Client**
+
 ![image](https://github.com/user-attachments/assets/e08e2777-29be-499e-b0ce-bf706bebf9be)
 
 **Owner**
+
 ![image](https://github.com/user-attachments/assets/a954412e-b23d-466d-bd01-411d866f085f)
 
 **Owner**
+
 ![image](https://github.com/user-attachments/assets/b1a41866-5566-453d-a251-909970ebb0ca)
 
 **Owner**
+
 ![image](https://github.com/user-attachments/assets/5d7c7e25-0ed9-4d1f-93dd-dc6badf9d9ec)
 
 **Owner**
+
 ![image](https://github.com/user-attachments/assets/1f247c8a-7b91-429c-ab04-b4ecd5f77308)
 
 **Owner**
+
 ![image](https://github.com/user-attachments/assets/35b731a8-1da1-4e33-b97e-928ac350b5dd)
 
 **Client menjadi Admin**
+
 ![image](https://github.com/user-attachments/assets/fad71365-a12f-421c-b2a2-3880bda405b0)
 
 
