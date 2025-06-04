@@ -8,7 +8,7 @@ Anggota Kelompok:
 - Aria Bima Sakti
 - Bintang Marsyuma
 - Raja Yonandro Ruslito
-- Zikri Zulfa Azim
+- Zikri Zulfa Azhim
 
 ## Pendahuluan
 
