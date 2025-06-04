@@ -1,5 +1,6 @@
 # Instalasi dan Konfigurasi Apache Cloudstack Private Cloud
 ![Departemen Teknik Elektro](https://hackmd.io/_uploads/BJNH1Yoblg.png)
+(Departemen Teknik Elektro)
 
 **Kelompok 14**
 
@@ -27,7 +28,8 @@ Tujuan dari penggunaan Apache CloudStack dalam proyek ini adalah untuk membangun
 
 ### Referensi Arsitektur
 
-![330488558-68ea9d69-1118-4500-8825-8c099f69c4ce](https://hackmd.io/_uploads/B1s5yFiWle.png)(Arsitektur)
+![Arsitektur Cloudstack](https://hackmd.io/_uploads/B1s5yFiWle.png)
+(Arsitektur Cloudstack)
 
 ### Dependencies yang Digunakan
 
