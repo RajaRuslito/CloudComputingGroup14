@@ -577,23 +577,24 @@ Ingress Rule dan Egress Rule pada Security Group di CloudStack digunakan untuk m
 ## Konfigurasi HTTP Server untuk Akses HTTP
 1. Update packet pada sistem linux.
 ```
-sudo apt update -y
+sudo apt update && apt upgrade
 ```
 2. Install httpd.
 ```
-sudo apt install httpd -y
+apt install apache2
 ```
-3. Mulai Apache serrvice pada sistem.
+3. cek status Apache web server.
 ```
-sudo systemctl start httpd
-sudo systemcl enable httpd
+systemctl status apache2
 ```
-4. cek status Apache web server.
+4. Pastikan status apache server dalam kondisi aktif.
+![image](https://hackmd.io/_uploads/HkGJWW0fgx.png)
+5. Akses server dengan ketik
 ```
-sudo systemctl status httpd
+http://<YOUR_IP_ADDRESS>
 ```
-5. Pastikan status apache server dalam kondisi aktif.
-![image](https://hackmd.io/_uploads/ByqKixCMxg.png)
+Output:
+![image](https://hackmd.io/_uploads/S1brbbAfgg.png)
 
 ----
 ## Kesimpulan
