@@ -1,5 +1,5 @@
 # Instalasi dan Konfigurasi Apache Cloudstack Private Cloud
-![331050339-7074f71b-6415-4646-a9c7-085ce958520d](https://hackmd.io/_uploads/BJNH1Yoblg.png)(Departemen Teknik Elektro)
+![Departemen Teknik Elektro](https://hackmd.io/_uploads/BJNH1Yoblg.png)
 
 **Kelompok 14**
 
