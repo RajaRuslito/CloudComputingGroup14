@@ -307,7 +307,7 @@ sed -i -e 's/\#vnc_listen.*$/vnc_listen = "0.0.0.0"/g' /etc/libvirt/qemu.conf
 sed -i.bak 's/^\(LIBVIRTD_ARGS=\).*/\1"--listen"/' /etc/default/libvirtd
 ```
 
-Penjelasan
+**Penjelasan**
 ```
 `sed -i -e 's/\#vnc_listen.*$/vnc_listen = "0.0.0.0"/g' /etc/libvirt/qemu.conf`
 # Perintah ini menggunakan perintah sed (stream editor) untuk mencari baris dalam file /etc/libvirt/qemu.conf yang dimulai dengan #vnc_listen dan menggantinya dengan vnc_listen = "0.0.0.0". Opsi -i memberi tahu sed untuk mengedit file di tempatnya (yaitu, menyimpan perubahan ke file asli). Alamat 0.0.0.0 adalah alamat IP khusus yang digunakan dalam pemrograman jaringan untuk menentukan semua alamat IP pada mesin lokal.
@@ -325,7 +325,7 @@ echo 'tcp_port = "16509"' >> /etc/libvirt/libvirtd.conf
 echo 'mdns_adv = 0' >> /etc/libvirt/libvirtd.conf
 echo 'auth_tcp = "none"' >> /etc/libvirt/libvirtd.conf
 ```
-Penjelasan:
+**Penjelasan**
 ```
 echo 'listen_tls=0' >> /etc/libvirt/libvirtd.conf
 # nonaktifkan mendengarkan TLS pada daemon libvirt
@@ -401,7 +401,7 @@ iptables -A INPUT -s $NETWORK -m state --state NEW -p tcp --dport 16514 -j ACCEP
 #iptables -A INPUT -s $NETWORK -m state --state NEW -p tcp --dport 3128 -j ACCEPT
 
 apt-get install iptables-persistent
-#jawab dengan: yes-yes
+#Gunakan jawaban : yes-yes
 ```
 
 Langkah ini memastikan semua port layanan yang digunakan oleh cloudstack tidak diblokir oleh firewall dan dapat diakses oleh jaringan
@@ -423,7 +423,7 @@ apparmor_parser -R /etc/apparmor.d/usr.sbin.libvirtd
 apparmor_parser -R /etc/apparmor.d/usr.lib.libvirt.virt-aa-helper
 ```
 
-Penjelasan
+**Penjelasan**
 
 ```
 `ln -s /etc/apparmor.d/usr.sbin.libvirtd /etc/apparmor.d/disable/`
@@ -448,7 +448,7 @@ systemctl status cloudstack-management
 tail -f /var/log/cloudstack/management/management-server.log #if you want to troubleshoot wait until all services (components) running successfully
 ```
 
-Penjelasan
+**Penjelasan**
 ```
 `cloudstack-setup-management`
 # Perintah ini digunakan untuk menyiapkan server manajemen untuk Apache CloudStack, perangkat lunak komputasi awan sumber terbuka untuk membuat, mengelola, dan menyebarkan layanan infrastruktur awan. Perintah ini mengonfigurasi koneksi basis data, menyiapkan alamat IP server manajemen, dan memulai server manajemen.
@@ -467,18 +467,18 @@ Penjelasan
 http://<YOUR_IP_ADDRESS>:8080
 ```
 
-Contoh
+**Contoh**
 
 ```
 http://192.168.0.172:8080
 ```
 
-### Anda Seharusnya Dapat Melihat Dashboard Cloudstack
+### Dapat Terlihat Dashboard Cloudstack
 
 ![image](https://hackmd.io/_uploads/H1bDkujbxx.png)
 
 ## Konfigurasi Dashboard Cloudstack
-### Login ke Dashboard Cloudstack 
+### Login pada Dashboard Cloudstack 
 ![Screenshot 2025-04-30 230208](https://hackmd.io/_uploads/ByfexujWex.png)
 
 ### Buat Zone baru
@@ -489,7 +489,7 @@ http://192.168.0.172:8080
 3. Isi detail zone dengan nama IP DNS (gunakan IP 8.8.8.8), IP internal DNS (IP subnet jaringan server), dan hypervisor (pilih KVM). 
 ![Screenshot 2025-04-30 231255](https://hackmd.io/_uploads/rJI1WusZgl.png)
 ![Screenshot 2025-04-30 231301](https://hackmd.io/_uploads/B11D-diZll.png)
-4. Lanjutkan ke step berikutnya.
+4. Buat network sesuai pada gambar.
 ![image](https://hackmd.io/_uploads/ryvtWds-el.png)
 5. Isi detail pod yang akan digunakan, mulai dari nama, IP gateway, subnet mask, dan alamat IP yang akan digunakan untuk manajemen internal cloudstack.
 ![Screenshot 2025-04-30 231317](https://hackmd.io/_uploads/By5jbdibll.png)
@@ -537,39 +537,45 @@ http://192.168.0.172:8080
 ![image](https://hackmd.io/_uploads/B1R2te0zle.png)
 
 2. Masuk ke detail security group.
-3. Di tab ingress dan egress rule, tambahkan rule ini.
+3. Di tab ingress dan egress rule, tambahkan rule berikut.
 
 ![image](https://hackmd.io/_uploads/ByeTYeAzxe.png)
 
 Ingress Rule dan Egress Rule pada Security Group di CloudStack digunakan untuk mengatur akses masuk dan keluar jaringan dari VM instance yang menggunakan security group tersebut. Setelah konfigurasi ini dilakukan. VM instance yang menggunakan security group ini dapat melakukan akses ke internet seperti ke google, youtube, dan sebagainya.
 
 ## Mengakses Server dari Jaringan yang Berbeda
-### Download Tailscale di Perangkat yang Berbeda
+### Download Tailscale di Perangkat yang Berbeda (Client)
 **Client**
 
 ![image](https://github.com/user-attachments/assets/e08e2777-29be-499e-b0ce-bf706bebf9be)
+Tailscale adalah sebuah layanan jaringan pribadi virtual (VPN) berbasis WireGuard yang memungkinkan perangkat saling terhubung secara aman dan langsung melalui jaringan peer-to-peer, tanpa perlu konfigurasi jaringan yang rumit.
 
+### Setup pada computer Owner agar terhubung dengan client melalui Talescale
 **Owner**
 
 ![image](https://github.com/user-attachments/assets/a954412e-b23d-466d-bd01-411d866f085f)
 
+### Pilih Server yang digunakan
 **Owner**
 
 ![image](https://github.com/user-attachments/assets/b1a41866-5566-453d-a251-909970ebb0ca)
 
+### Add Device dari client
 **Owner**
 
 ![image](https://github.com/user-attachments/assets/5d7c7e25-0ed9-4d1f-93dd-dc6badf9d9ec)
 
+### Setelah terhubung akan muncul dashboard sebagai berikut
 **Owner**
 
 ![image](https://github.com/user-attachments/assets/1f247c8a-7b91-429c-ab04-b4ecd5f77308)
 
+### Lakukan ubah role menjadi admin. 
 **Owner**
 
 ![image](https://github.com/user-attachments/assets/35b731a8-1da1-4e33-b97e-928ac350b5dd)
 
-**Client menjadi Admin**
+### Ubah Client menjadi Admin
 
 ![image](https://github.com/user-attachments/assets/fad71365-a12f-421c-b2a2-3880bda405b0)
 
@@ -598,9 +604,9 @@ Output:
 
 ----
 ## Kesimpulan
-Dengan menggunakan Apache CloudStack, proses manajemen infrastruktur virtual menjadi lebih mudah, terpusat, dan efisien. Meskipun terdapat beberapa tantangan teknis saat instalasi, solusi dapat ditemukan dengan dokumentasi dan troubleshooting yang tepat.
+Dengan memanfaatkan Apache CloudStack, proses manajemen infrastruktur virtual dapat dilakukan secara lebih mudah, terpusat, dan efisien. Meskipun dalam proses instalasi mungkin ditemukan beberapa kendala teknis, hal tersebut umumnya dapat diatasi melalui pemanfaatan dokumentasi resmi serta langkah-langkah pemecahan masalah (troubleshooting) yang tepat dan sistematis.
 
-## Link Video Demo
+## Berikut Link Video Demo
 
 [https://youtu.be/Gbz_mSAZZ6U](https://www.youtube.com/watch?v=Gbz_mSAZZ6U)
 
