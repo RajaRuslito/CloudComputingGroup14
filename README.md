@@ -545,6 +545,7 @@ Ingress Rule dan Egress Rule pada Security Group di CloudStack digunakan untuk m
 
 ## Mengakses Server dari Jaringan yang Berbeda
 ### Download Tailscale di Perangkat yang Berbeda (Client)
+
 Tailscale adalah sebuah layanan jaringan pribadi virtual (VPN) berbasis WireGuard yang memungkinkan perangkat saling terhubung secara aman dan langsung melalui jaringan peer-to-peer, tanpa perlu konfigurasi jaringan yang rumit.
 **Client**
 
