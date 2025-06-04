@@ -1,5 +1,5 @@
 # Instalasi dan Konfigurasi Apache Cloudstack Private Cloud
-![331050339-7074f71b-6415-4646-a9c7-085ce958520d](https://hackmd.io/_uploads/BJNH1Yoblg.png)
+![331050339-7074f71b-6415-4646-a9c7-085ce958520d](https://hackmd.io/_uploads/BJNH1Yoblg.png)(Departemen Teknik Elektro)
 
 **Kelompok 14**
 
@@ -27,7 +27,7 @@ Tujuan dari penggunaan Apache CloudStack dalam proyek ini adalah untuk membangun
 
 ### Referensi Arsitektur
 
-![330488558-68ea9d69-1118-4500-8825-8c099f69c4ce](https://hackmd.io/_uploads/B1s5yFiWle.png)
+![330488558-68ea9d69-1118-4500-8825-8c099f69c4ce](https://hackmd.io/_uploads/B1s5yFiWle.png)(Arsitektur)
 
 ### Dependencies yang Digunakan
 
@@ -564,3 +564,9 @@ http://192.168.0.172:8080
 ----
 ## Kesimpulan
 Dengan menggunakan Apache CloudStack, proses manajemen infrastruktur virtual menjadi lebih mudah, terpusat, dan efisien. Meskipun terdapat beberapa tantangan teknis saat instalasi, solusi dapat ditemukan dengan dokumentasi dan troubleshooting yang tepat.
+
+
+----
+## Referensi
+- [1] A. Rifqi, “CloudStack Install and Configure,” GitHub, [Online]. Available: https://github.com/AhmadRifqi86/cloudstack-install-and-configure/tree/main/cloudstack-install. [Accessed: 4-Jun-2025].
+- [2] Learn Techno, “Install Cloudstack Management Server on Ubuntu 20.04 | Apache Cloudstack | Cloudstack Installation,” YouTube, 13-May-2022. [Online Video]. Available: https://www.youtube.com/watch?v=DlJg3LYvIIs&t=569s. [Accessed: 4-Jun-2025].
