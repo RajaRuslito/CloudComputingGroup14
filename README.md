@@ -531,6 +531,18 @@ http://192.168.0.172:8080
 6. Untuk bagian detail bisa diisi atau dibiarkan saja dan luncurkan instance-nya.
 ![image](https://hackmd.io/_uploads/H1xleKs-xg.png)
 
+### Konfigurasi Jaringan Agar VM Instance Dapat Mengakses Internet
+1. Masuk Ke Menu Security Groups.
+
+![image](https://hackmd.io/_uploads/B1R2te0zle.png)
+
+2. Masuk ke detail security group.
+3. Di tab ingress dan egress rule, tambahkan rule ini.
+
+![image](https://hackmd.io/_uploads/ByeTYeAzxe.png)
+
+Ingress Rule dan Egress Rule pada Security Group di CloudStack digunakan untuk mengatur akses masuk dan keluar jaringan dari VM instance yang menggunakan security group tersebut. Setelah konfigurasi ini dilakukan. VM instance yang menggunakan security group ini dapat melakukan akses ke internet seperti ke google, youtube, dan sebagainya.
+
 ## Mengakses Server dari Jaringan yang Berbeda
 ### Download Tailscale di Perangkat yang Berbeda
 **Client**
@@ -562,6 +574,26 @@ http://192.168.0.172:8080
 ![image](https://github.com/user-attachments/assets/fad71365-a12f-421c-b2a2-3880bda405b0)
 
 
+## Konfigurasi HTTP Server untuk Akses HTTP
+1. Update packet pada sistem linux.
+```
+sudo apt update -y
+```
+2. Install httpd.
+```
+sudo apt install httpd -y
+```
+3. Mulai Apache serrvice pada sistem.
+```
+sudo systemctl start httpd
+sudo systemcl enable httpd
+```
+4. cek status Apache web server.
+```
+sudo systemctl status httpd
+```
+5. Pastikan status apache server dalam kondisi aktif.
+![image](https://hackmd.io/_uploads/ByqKixCMxg.png)
 
 ----
 ## Kesimpulan
