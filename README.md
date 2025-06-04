@@ -589,13 +589,13 @@ sudo apt update && apt upgrade
 ```
 apt install apache2
 ```
-3. cek status Apache web server.
+3. Cek status dari Apache web server.
 ```
 systemctl status apache2
 ```
 4. Pastikan status apache server dalam kondisi aktif.
 ![image](https://hackmd.io/_uploads/HkGJWW0fgx.png)
-5. Akses server dengan ketik
+5. Akses server dengan mengetik :
 ```
 http://<YOUR_IP_ADDRESS>
 ```
