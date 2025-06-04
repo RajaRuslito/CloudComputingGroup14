@@ -567,7 +567,8 @@ http://192.168.0.172:8080
 ## Kesimpulan
 Dengan menggunakan Apache CloudStack, proses manajemen infrastruktur virtual menjadi lebih mudah, terpusat, dan efisien. Meskipun terdapat beberapa tantangan teknis saat instalasi, solusi dapat ditemukan dengan dokumentasi dan troubleshooting yang tepat.
 
-
+## Link Video Demo
+[https://youtu.be/Gbz_mSAZZ6U](https://www.youtube.com/watch?v=Gbz_mSAZZ6U)
 ----
 ## Referensi
 - [1] A. Rifqi, “CloudStack Install and Configure,” GitHub, [Online]. Available: https://github.com/AhmadRifqi86/cloudstack-install-and-configure/tree/main/cloudstack-install. [Accessed: 4-Jun-2025].
