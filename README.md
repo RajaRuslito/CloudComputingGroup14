@@ -545,22 +545,22 @@ Ingress Rule dan Egress Rule pada Security Group di CloudStack digunakan untuk m
 
 ## Mengakses Server dari Jaringan yang Berbeda
 ### Download Tailscale di Perangkat yang Berbeda (Client)
+Tailscale adalah sebuah layanan jaringan pribadi virtual (VPN) berbasis WireGuard yang memungkinkan perangkat saling terhubung secara aman dan langsung melalui jaringan peer-to-peer, tanpa perlu konfigurasi jaringan yang rumit.
 **Client**
 
 ![image](https://github.com/user-attachments/assets/e08e2777-29be-499e-b0ce-bf706bebf9be)
-Tailscale adalah sebuah layanan jaringan pribadi virtual (VPN) berbasis WireGuard yang memungkinkan perangkat saling terhubung secara aman dan langsung melalui jaringan peer-to-peer, tanpa perlu konfigurasi jaringan yang rumit.
 
 ### Setup pada computer Owner agar terhubung dengan client melalui Talescale
 **Owner**
 
 ![image](https://github.com/user-attachments/assets/a954412e-b23d-466d-bd01-411d866f085f)
 
-### Pilih Server yang digunakan
+### Pilih Server yang akan digunakan
 **Owner**
 
 ![image](https://github.com/user-attachments/assets/b1a41866-5566-453d-a251-909970ebb0ca)
 
-### Add Device dari client
+### Add Device milik client
 **Owner**
 
 ![image](https://github.com/user-attachments/assets/5d7c7e25-0ed9-4d1f-93dd-dc6badf9d9ec)
@@ -570,7 +570,7 @@ Tailscale adalah sebuah layanan jaringan pribadi virtual (VPN) berbasis WireGuar
 
 ![image](https://github.com/user-attachments/assets/1f247c8a-7b91-429c-ab04-b4ecd5f77308)
 
-### Lakukan ubah role menjadi admin. 
+### Lakukan ubah role menjadi Admin 
 **Owner**
 
 ![image](https://github.com/user-attachments/assets/35b731a8-1da1-4e33-b97e-928ac350b5dd)
