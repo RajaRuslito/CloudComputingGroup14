@@ -603,6 +603,37 @@ http://<YOUR_IP_ADDRESS>
 Output:
 ![image](https://hackmd.io/_uploads/S1brbbAfgg.png)
 
+### Menerapkan Domain pada Akses HTTP ke VM Instance
+Untuk membuat domain yang akan mengarahkan akses ke alamat mesin VM yang telah dibuat di cloudstack dapat menggunakan penyedia layanan Dynamic DNS (DDnS). Penggunaan nama domain ini memudahkan akses ke server, terutama akses HTTP dimana user tidak perlu memasukkan alamat IP dari server tersebut. DDnS ini banyak contohnya, seperti DynDNS, DuckDNS, Cloudflare DDNS, dan No-IP. Pada percobaan ini, kami menggunakan No-IP sebagai layanan DDNS ke mesin VM yang telah dibuat di cloudstack.
+**Langkah-Langkah:**
+1. Kunjungi website [No-IP](https://www.noip.com) dan daftarkan akun.
+![Image](https://hackmd.io/_uploads/Byf7BuRGgl.jpg)
+2. Masuk ke menu DDNS & Remote Access dan arahkan ke menu No-IP Hostnames.
+![Image](https://hackmd.io/_uploads/ryD7HuAfle.jpg)
+3. Di menu daftar hostname, klik Create Hostname dan masukkan detail nama hostt, pilihan domain, dan alamat IP server yang akan dihubungkan.
+![Image](https://hackmd.io/_uploads/SkVQr_Czlg.jpg)
+4. Update paket pada OS yang digunakan.
+```
+sudo apt update
+```
+5. install build-essential untuk compiler program No-IP.
+```
+sudo apt install build-essential
+```
+6. Masuk ke folder /usr/local/src/ dan download arsip No-IP serta mengekstrak isi file-nya.
+```
+cd /usr/local/src/
+sudo wget https://www.noip.com/client/linux/noip-duc-linux.tar.gz
+sudo tar xf noip-duc-linux.tar.gz
+```
+7. Masuk ke folder No-IP dan jalankan binary noip2
+```
+cd noip-2.1.9-1/
+sudo make install
+```
+8. Masukkan port yang akan digunakan (port dengan alamat IP yang memiliki akses HTTP), email akun No-IP, password akun No-IP, dan update interval (bisa gunakan default). Hasil output sebagai berikut.
+![image](https://hackmd.io/_uploads/Hk582dRMlx.png)
+
 ----
 ## Kesimpulan
 Dengan memanfaatkan Apache CloudStack, proses manajemen infrastruktur virtual dapat dilakukan secara lebih mudah, terpusat, dan efisien. Meskipun dalam proses instalasi mungkin ditemukan beberapa kendala teknis, hal tersebut umumnya dapat diatasi melalui pemanfaatan dokumentasi resmi serta langkah-langkah pemecahan masalah (troubleshooting) yang tepat dan sistematis.
@@ -615,3 +646,5 @@ Dengan memanfaatkan Apache CloudStack, proses manajemen infrastruktur virtual da
 ## Referensi
 - [1] A. Rifqi, “CloudStack Install and Configure,” GitHub, [Online]. Available: https://github.com/AhmadRifqi86/cloudstack-install-and-configure/tree/main/cloudstack-install. [Accessed: 4-Jun-2025].
 - [2] Learn Techno, “Install Cloudstack Management Server on Ubuntu 20.04 | Apache Cloudstack | Cloudstack Installation,” YouTube, 13-May-2022. [Online Video]. Available: https://www.youtube.com/watch?v=DlJg3LYvIIs&t=569s. [Accessed: 4-Jun-2025].
+- [3] Qazale Hesami, “Easy Steps for WordPress Installation on Fedora Linux 39,” OrcaCore, 04-Dec-2023. [Online]. Available: https://orcacore.com/wordpress-installation-fedora39/#google_vignette [Accessed: 12-May-2025].
+- [4] P. Kumar, “How to install WordPress on Ubuntu | DigitalOcean,” www.digitalocean.com, 04-Aug-2022. [Online]. Available: https://www.digitalocean.com/community/tutorials/install-wordpress-on-ubuntu. [Accessed: 4-Jun-2025].
