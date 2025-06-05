@@ -646,5 +646,5 @@ Dengan memanfaatkan Apache CloudStack, proses manajemen infrastruktur virtual da
 ## Referensi
 - [1] A. Rifqi, “CloudStack Install and Configure,” GitHub, [Online]. Available: https://github.com/AhmadRifqi86/cloudstack-install-and-configure/tree/main/cloudstack-install. [Accessed: 4-Jun-2025].
 - [2] Learn Techno, “Install Cloudstack Management Server on Ubuntu 20.04 | Apache Cloudstack | Cloudstack Installation,” YouTube, 13-May-2022. [Online Video]. Available: https://www.youtube.com/watch?v=DlJg3LYvIIs&t=569s. [Accessed: 4-Jun-2025].
-- [3] Qazale Hesami, “Easy Steps for WordPress Installation on Fedora Linux 39,” OrcaCore, 04-Dec-2023. [Online]. Available: https://orcacore.com/wordpress-installation-fedora39/#google_vignette [Accessed: 12-May-2025].
-- [4] P. Kumar, “How to install WordPress on Ubuntu | DigitalOcean,” www.digitalocean.com, 04-Aug-2022. [Online]. Available: https://www.digitalocean.com/community/tutorials/install-wordpress-on-ubuntu. [Accessed: 4-Jun-2025].
+- [3] Tailscale, “Subnet routers,” Tailscale, [Online]. Available: https://tailscale.com/kb/1019/subnets. [Accessed: 17-May-2025].
+- [4] E. Glass, J. Horcasitas, “How To Install the Apache Web Server on Ubuntu | DigitalOcean,” www.digitalocean.com, 04-Aug-2022. [Online]. Available: https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-22-04. [Accessed: 4-Jun-2025].
